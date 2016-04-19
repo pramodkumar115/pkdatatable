@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="pkdatatable.js" ></script>
+    </head>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            font-family: verdana;
+            font-size: 12px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            
+                var datatable = new DataTable();
+                datatable.dataGrid({
+                    renderTo: 'dataTable',
+                    zebraRows: true,
+                    width:'75%',
+                    paging: true,
+                    height:"300px",
+                    editable: true,
+                    sequenceModel: [{id:'idSequence', startNum: 1, increment: 2},
+                                   {id:'idSequence2', startNum: 1, increment: 4}],
+                    data : [
+                        {name: 'Pramod', dept: 'MECH', grade: 1},
+                        {name: 'Kumar', dept: 'EE', grade: 2},
+                        {name: 'Geetha', dept: 'EC', grade: 3},
+                        {name: 'Uttham', dept: 'CIVIL', grade: 4},
+                        {name: 'Pramod', dept: 'MECH', grade: 5},
+                        {name: 'Kumar', dept: 'EE', grade: 6},
+                        {name: 'Geetha', dept: 'EC', grade: 7},
+                        {name: 'Uttham', dept: 'CIVIL', grade: 8},
+                        {name: 'Pramod', dept: 'MECH', grade: 9},
+                        {name: 'Kumar', dept: 'EE', grade: 10},
+                        {name: 'Geetha', dept: 'EC', grade: 11},
+                        {name: 'Uttham', dept: 'CIVIL', grade: 12},
+                        {name: 'Pramod', dept: 'MECH', grade: 13},
+                        {name: 'Kumar', dept: 'EE', grade: 14},
+                        {name: 'Geetha', dept: 'EC', grade: 15},
+                        {name: 'Uttham', dept: 'CIVIL', grade: 16},
+                        {name: 'Pramod', dept: 'MECH', grade: 17},
+                        {name: 'Kumar', dept: 'EE', grade: 18},
+                        {name: 'Geetha', dept: 'EC', grade: 19},
+                        {name: 'Pramod', dept: 'MECH', grade: 20},
+                        {name: 'Kumar', dept: 'EE', grade: 21},
+                        {name: 'Geetha', dept: 'EC', grade: 22},
+                        {name: 'Uttham', dept: 'CIVIL', grade: 23},
+                        {name: 'Pramod', dept: 'MECH', grade: 24},
+                        {name: 'Kumar', dept: 'EE', grade: 25},
+                        {name: 'Geetha', dept: 'EC', grade: 26},
+                        {name: 'Uttham', dept: 'CIVIL', grade: 27},
+                        {name: 'Pramod', dept: 'MECH', grade: 28},
+                        {name: 'Kumar', dept: 'EE', grade: 29},
+                        {name: 'Geetha', dept: 'EC', grade: 30},
+                        {name: 'Uttham', dept: 'CIVIL', grade: 31},
+                        {name: 'Pramod', dept: 'MECH', grade: 32},
+                        {name: 'Kumar', dept: 'EE', grade: 33},
+                        {name: 'Geetha', dept: 'EC', grade: 34},
+                        {name: 'Uttham', dept: 'CIVIL', grade: 35},
+                        {name: 'Pramod', dept: 'MECH', grade: 36},
+                        {name: 'Kumar', dept: 'EE', grade: 37},
+                        {name: 'Geetha', dept: 'EC', grade: 38},
+                        {name: 'Pramod', dept: 'MECH', grade: 39},
+                        {name: 'Kumar', dept: 'EE', grade: 40},
+                        {name: 'Geetha', dept: 'EC', grade: 41},
+                        {name: 'Uttham', dept: 'CIVIL', grade: 42},
+                        {name: 'Pramod', dept: 'MECH', grade: 43},
+                        {name: 'Kumar', dept: 'EE', grade: 44},
+                        {name: 'Geetha', dept: 'EC', grade: 45},
+                        {name: 'Uttham', dept: 'CIVIL', grade: 46},
+                        {name: 'Pramod', dept: 'MECH', grade: 47},
+                        {name: 'Kumar', dept: 'EE', grade: 48},
+                        {name: 'Geetha', dept: 'EC', grade: 49},
+                        {name: 'Uttham', dept: 'CIVIL', grade: 50},
+                        {name: 'Pramod', dept: 'MECH', grade: 51},
+                        {name: 'Kumar', dept: 'EE', grade: 52},
+                        {name: 'Geetha', dept: 'EC', grade: 53},
+                        {name: 'Uttham', dept: 'CIVIL', grade: 54},
+                        {name: 'Pramod', dept: 'MECH', grade: 55},
+                        {name: 'Kumar', dept: 'EE', grade: 56},
+                        {name: 'Geetha', dept: 'EC', grade: 57}
+                    ],
+                    columns: [{
+                        header:'Serial Number',
+                        sequence: 'idSequence',
+                        textAlign: 'right',
+                        width: '10%'
+                        //width: '100px'
+                    },{
+                        header: 'Employee Name',
+                        dataIndex: 'name',
+                        lblAlign: 'right',
+                        width: '30%',
+                        //width: '400px',
+                        editor: {
+                            type: 'textfield'   
+                        }
+                    },{
+                        header: 'Employee Department',
+                        dataIndex: 'dept',
+                        width: '30%',
+                        editor: {
+                            type: 'combo',
+                            data: [{value: 'CIVIL', displayText: 'Civil'},
+                                {value: 'EE', displayText: 'E & E'},
+                                {value: 'EC', displayText: 'E & C'},
+                                {value: 'MECH', displayText: 'Mechanical'}],
+                            displayText: 'displayText',
+                            value: 'value'
+                        }
+                    },{
+                        header: 'Employee Grade',
+                        dataIndex: 'grade',
+                        textAlign: 'right',
+                        lblAlign: 'left',
+                        width: '15%',
+                        editor: {
+                            type: 'textfield'   
+                        }
+                    },{
+                        header: 'Employee Grade',
+                        dataIndex: 'grade',
+                        textAlign: 'right',
+                        lblAlign: 'left',
+                        width: '15%',
+                        editor: {
+                            type: 'textfield'   
+                        }
+                    }],
+                })
+            //})
+        };
+        
+    </script>
+    <body>
+        <div id="dataTable">
+        
+        </div>
+    </body>
