@@ -617,7 +617,12 @@ var handleAdd = function(table, jsonData){
         record[key] = "";
     }
     jsonData.data.splice(0,0,record);
-    var newDataTable = new DataTable().dataGrid(jsonData);
+    var newDataTableId = new DataTable().dataGrid(jsonData);
+    var newTable = document.getElementById(newDataTableId);
+    var tBody = newTable.getElementsByTagName("tbody")[0];
+    console.log(tBody);
+    var row = tBody.childNodes[0];
+    row.ondblclick();
 }
 
 var handleSave = function(table,jsonData){
