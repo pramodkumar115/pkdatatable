@@ -22,8 +22,8 @@
                     paging: true,
                     height:"300px",
                     editable: true,
-                    sequenceModel: [{id:'idSequence', startNum: 1, increment: 2},
-                                   {id:'idSequence2', startNum: 1, increment: 4}],
+                    /*sequenceModel: [{id:'idSequence', startNum: 1, increment: 2},
+                                   {id:'idSequence2', startNum: 1, increment: 4}],*/
                     data : [
                         {name: 'Pramod', dept: 'MECH', grade: 1},
                         {name: 'Kumar', dept: 'EE', grade: 2},
@@ -83,17 +83,17 @@
                         {name: 'Kumar', dept: 'EE', grade: 56},
                         {name: 'Geetha', dept: 'EC', grade: 57}
                     ],
-                    columns: [{
+                    columns: [/*{
                         header:'Serial Number',
                         sequence: 'idSequence',
                         textAlign: 'right',
                         width: '10%'
                         //width: '100px'
-                    },{
+                    },*/{
                         header: 'Employee Name',
                         dataIndex: 'name',
                         lblAlign: 'right',
-                        width: '30%',
+                        width: '40%',
                         //width: '400px',
                         editor: {
                             type: 'textfield'   
@@ -116,20 +116,11 @@
                         dataIndex: 'grade',
                         textAlign: 'right',
                         lblAlign: 'left',
-                        width: '15%',
+                        width: '30%',
                         editor: {
                             type: 'textfield'   
                         }
-                    },{
-                        header: 'Employee Grade',
-                        dataIndex: 'grade',
-                        textAlign: 'right',
-                        lblAlign: 'left',
-                        width: '15%',
-                        editor: {
-                            type: 'textfield'   
-                        }
-                    }],
+                    }]
                 })
             //})
         };

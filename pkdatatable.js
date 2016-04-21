@@ -1,10 +1,7 @@
 var sortSequence ={colDataIndex: '', sortOrder:''};
 var selectedPage = 1, dataTableStartPoint = 0, rowHeight = 0, selectedRecord, noOfRowsPossible = 0;
 var DataTable = function(){
-    /*this.sortSequence = {colDataIndex: '', sortOrder:''};
-    this.selectedPage = 1;
-    this.dataTableStartPoint = 0;
-    this.rowHeight = 0;*/
+    
 }
 DataTable.prototype.dataGrid = function(jsonData){
     try{
@@ -360,12 +357,13 @@ DataTable.prototype.styleTheTable = function(jsonData, tableId){
             'white-space: nowrap;'+
         '}'+
         '.paginator{'+
-            'width: 100%;'+
-            'margin: 0 auto;'+
+            'width: '+width+';'+
+            'display: block;'+
         '}'+
         '.paginator ul{'+
-            'width: 50%;'+
-            'margin: auto;'+
+            'padding: 0;'+
+            'float: right;'+
+            'margin: 0;'+
         '}'+
         '.paginator li{'+
             //'margin:0.5%;'+
@@ -378,11 +376,11 @@ DataTable.prototype.styleTheTable = function(jsonData, tableId){
             'border-collapse: collapse;'+
             'margin:1px;' +
         '}'+
-        '.paginator li:first-child{'+
+        '.paginator li{'+
             'border-top-left-radius: 3px;'+
             'border-bottom-left-radius: 3px;'+
         '}'+
-        '.paginator li:last-child{'+
+        '.paginator li{'+
             'border-top-right-radius: 3px;'+
             'border-bottom-right-radius: 3px;'+
         '}'+
@@ -536,9 +534,9 @@ DataTable.prototype.createPagination = function(jsonData, table){
         if(selectedPage == i+1){
             btn.className = 'active';
         }
-        /*if (i == 4){
-            break;
-        }*/
+        if (i >= 4){
+            btn.style.display = 'none';
+        }
     }
     if(pagesNeeded > 2){
         var btnNext = document.createElement('LI');
@@ -561,7 +559,7 @@ DataTable.prototype.createPagination = function(jsonData, table){
 handlePagination = function(child, table, jsonData, noOfRowsPossible, pagesNeeded){
     if(child.innerText == '<'){
         if(selectedPage > 1){
-            selectedPage = selectedPage - 1;   
+            selectedPage = selectedPage - 1;
         }
         else{
             selectedPage = 1;
@@ -573,7 +571,7 @@ handlePagination = function(child, table, jsonData, noOfRowsPossible, pagesNeede
     }
     else if(child.innerText == '>'){
         if(selectedPage != pagesNeeded){
-            selectedPage = selectedPage + 1;   
+            selectedPage = parseInt(selectedPage, 10) + 1;   
         }
         else{
             selectedPage = pagesNeeded;
@@ -585,8 +583,24 @@ handlePagination = function(child, table, jsonData, noOfRowsPossible, pagesNeede
     else{
         selectedPage = child.innerText;
     }
+    
     dataTableStartPoint = (selectedPage - 1) * noOfRowsPossible;
     var sortedTableId = new DataTable().dataGrid(jsonData);
+    var paginatorDiv = document.getElementsByClassName("paginator")[0];
+    var paginatorUl = paginatorDiv.getElementsByTagName('UL')[0];
+    var paginatorList = paginatorUl.childNodes;
+    for(var i = 0; i < paginatorList.length; i++){
+        if(selectedPage > 4){
+            if((i > parseInt(selectedPage, 10) + 1) || i < parseInt(selectedPage, 10) - 2){
+                if(paginatorList[i].innerText == '<' || paginatorList[i].innerText == '<<' || paginatorList[i].innerText == '>' || paginatorList[i].innerText == '>>'){
+                    continue;
+                }
+                paginatorList[i].style.display = 'none';
+            }else{
+                paginatorList[i].style.display = 'block';
+            }
+        }
+    }
 }
 
 var handleRemove = function(table, jsonData){
